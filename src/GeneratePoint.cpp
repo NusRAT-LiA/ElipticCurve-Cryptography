@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//ElipticCurve EC;
+ElipticCurve EC;
 //Entity newEntity;
 
 bool Is_Prime(int n)
@@ -51,17 +51,17 @@ bool Is_Prime(int n)
    return EC;
  }
 
-Entity  generateKey(Entity newEntity,ElipticCurve EC)
-{  //cout<<"Executing"<<endl;
-   //EC=CreateCurve();
-  // Entity newEntity(Name,EC);
+pair<long long int , long long int > generateKey(string Name)
+{  
+   EC=CreateCurve();
+   Entity newEntity(Name,EC);
    Point G = GeneratePointG(newEntity,EC);
    srand(time(NULL));
    newEntity.PrivateKeyGeneration();
    newEntity.PublicKeyGeneration(G);
    
    
-   return newEntity;
+   return {newEntity.PublicKey.getX(),newEntity.PublicKey.getY()};
    
 }
 
