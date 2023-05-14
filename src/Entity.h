@@ -40,16 +40,16 @@ class Entity{
         Entity(){} 
 
         // Function to convert message characters to ASCII values and store them in MsgAscii array
-        void StringToAscii()
-        {
-            MsgSize = Message.length();
-            MsgAscii = new long long int[MsgSize];
+        // void StringToAscii()
+        // {
+        //     MsgSize = Message.length();
+        //     MsgAscii = new long long int[MsgSize];
 
-            for (int i = 0; i < Message.length(); i++)
-            {
-                MsgAscii[i] = Message[i];
-            }
-        }
+        //     for (int i = 0; i < Message.length(); i++)
+        //     {
+        //         MsgAscii[i] = Message[i];
+        //     }
+        // }
 
         // Function to find y-coordinate of a point on elliptical curve given the x-coordinate
         int FindY(int RHS)
@@ -69,37 +69,38 @@ class Entity{
         {
             
             PrivateKey = rand() % ElipticCurv.GetRangeC() + 2;
-            cout<<"Rremember "<<this->EntityName<<"'s  Private Key , You cant access it again !!  : "<<PrivateKey<<endl;
+            cout<<"Rremember "<<this->EntityName<<"'s  Private Key , You cant invoke it again !!  : "<<PrivateKey<<endl;
            // PublicKey=Point :: pointMultiplication(G,PrivateKey, ElipticCurv.GetRangeC(), ElipticCurv.GetA());
         }
-
+       
+       //Function to generate enityt's Public Key 
         void PublicKeyGeneration( Point G)
         {
-            this->PublicKey=Point :: pointMultiplication(G,PrivateKey, ElipticCurv.GetRangeC(), ElipticCurv.GetA());
+            this->PublicKey=Point :: pointMultiplication(G,this->PrivateKey,this->ElipticCurv.GetRangeC(), this->ElipticCurv.GetA());
         }
 
         // Function to encode message into points on elliptical curve
-        void Encoding(ElipticCurve E, long long int k)
-        {
-            Encoded = new Point[MsgSize];
-            ElipticCurv = E;
-            for (int i = 0; i < MsgSize; i++){
-              Point P = Point::messageEncoding(Message[i],ElipticCurv.GetRangeC(),ElipticCurv.GetA(),ElipticCurv.GetB());
-              Encoded[i]=P;
-            }
-        }
+        // void Encoding(ElipticCurve E, long long int k)
+        // {
+        //     Encoded = new Point[MsgSize];
+        //     ElipticCurv = E;
+        //     for (int i = 0; i < MsgSize; i++){
+        //       Point P = Point::messageEncoding(Message[i],ElipticCurv.GetRangeC(),ElipticCurv.GetA(),ElipticCurv.GetB());
+        //       Encoded[i]=P;
+        //     }
+        // }
 
         // Function to perform key exchange and generate shared secret key
-        void KeyExchang(Point PubKey)
-        {
-            SecretKey=Point :: pointMultiplication(PubKey,PrivateKey, ElipticCurv.GetRangeC(), ElipticCurv.GetA());
-        }
+        // void KeyExchang(Point PubKey)
+        // {
+        //     SecretKey=Point :: pointMultiplication(PubKey,PrivateKey, ElipticCurv.GetRangeC(), ElipticCurv.GetA());
+        // }
 
-        bool isEnityValid(long long int PrivKey)
-        {
-           if(this->PrivateKey==PrivKey)return true;
-           return false;
-        }
+        // bool isEnityValid(long long int PrivKey)
+        // {
+        //    if(this->PrivateKey==PrivKey)return true;
+        //    return false;
+        // }
 
         
         

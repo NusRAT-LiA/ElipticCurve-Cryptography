@@ -13,50 +13,58 @@ class Point
         
       
     public :
-        
-        Point(){this->x=0;this->y=0;}
 
+        // Default constructor
+        Point(){this->x=0;this->y=0;}
+        
+        // Parameterized constructor
         Point(long long int a , long long int b)
         {
             this->x=a;
             this->y=b;
         }
-
+        
+        // Getter for x coordinate
         long long int getX()
         {
             return x;
         }
-
+      
+        // Getter for y coordinate
         long long int getY()
         {
             return y;
         } 
-
+        
+        // Setter for x coordinate
         void setX(long long int a)
         {
             this->x=a;
         }
 
-
+        // Setter for y coordinate
         void setY(long long int b)
         {
             this->y=b;
         }
 
         // Function to convert an integer to a binary string
-        static string toBinaryString(int n) {
-         if (n == 0) { return "0"; }// Special case for 0 
+        static string toBinaryString(int n) 
+           {
 
-        string binary = ""; // Initialize an empty string to hold the binary digits
+               if (n == 0) { return "0"; }// Special case for 0 
 
-        while (n > 0) {
-        int bit = n % 2; // Extract the least significant bit
-        binary = to_string(bit) + binary; // Prepend the bit to the binary string
-        n /= 2; // Shift the integer right by 1 bit
-        }
+               string binary = ""; // Initialize an empty string to hold the binary digits
 
-         return binary; // Return the binary string
-        }
+               while (n > 0) 
+               {
+                     int bit = n % 2; // Extract the least significant bit
+                     binary = to_string(bit) + binary; // Prepend the bit to the binary string
+                     n /= 2; // Shift the integer right by 1 bit
+               }
+
+            return binary; // Return the binary string
+           }
 
 
          static   long long int gcdExtended(long long int a, long long int b , long long int* x, long long int* y)
